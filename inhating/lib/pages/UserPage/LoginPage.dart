@@ -113,7 +113,8 @@ class MainScreen extends StatelessWidget {
                   SizedBox(height: 10), // 버튼 간의 간격
                   // 회원가입 버튼
                   SizedBox(
-                    width: 350, // 버튼 너비를 고정
+                    width: 350,
+                    height: 50, // 버튼 너비를 고정
                     child: ElevatedButton(
                       onPressed: () {
                         // 회원가입 기능 추가

@@ -57,6 +57,8 @@ flutter:
     - assets/MainLogoBlue.png
     - assets/IconUser.png
     - assets/IconLock.png
+    - assets/Background.png
+    - assets/Onboarding.png
     
 
 
