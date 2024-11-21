@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart'; // Provider import
-import 'package:inhating/pages/MainPage/AlcholTing/AlcholTing.dart'; // AlcholTing import
-import 'package:inhating/pages/MainPage/MajorTIng/MajorTing.dart'; // MajorTIng import
-import 'package:inhating/pages/MainPage/TaxiTing/TaxiTing.dart'; // TaxiTIng import
+import 'package:inhating/pages/MainPage/AlcholTing/AlcholTing.dart'; // AlcholTing 파일 import
+import 'package:inhating/pages/MainPage/MajorTIng/MajorTing.dart'; // MajorTIng 파일 import
+import 'package:inhating/pages/MainPage/TaxiTing/TaxiTing.dart'; // TaxiTIng 파일 import
 import 'package:inhating/Providers/MatchingProvider.dart'; // MatchingProvider import
 
 void main() {
@@ -12,28 +12,23 @@ void main() {
         ChangeNotifierProvider(
             create: (_) => MatchingProvider()), // MatchingProvider 등록
       ],
-      child: const MyApp(),
+      child: MyApp(),
     ),
   );
 }
 
 // Main Application
 class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
-
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: const HomePage(),
+      home: HomePage(),
     );
   }
 }
 
 // Home Page with Tabs
 class HomePage extends StatefulWidget {
-  const HomePage({Key? key}) : super(key: key);
-
   @override
   _HomePageState createState() => _HomePageState();
 }
@@ -56,8 +51,6 @@ class _HomePageState extends State<HomePage>
 
   @override
   Widget build(BuildContext context) {
-    final matchingProvider = Provider.of<MatchingProvider>(context);
-
     return Scaffold(
       body: Container(
         decoration: const BoxDecoration(
@@ -81,15 +74,9 @@ class _HomePageState extends State<HomePage>
                     'assets/inha_logo.png', // 로고 이미지 경로
                     height: 40,
                   ),
-                  Stack(
-                    children: [
-                      IconButton(
-                        icon: const Icon(Icons.person, color: Colors.grey),
-                        onPressed: () {
-                          // 사용자 프로필 페이지 이동 (예시)
-                        },
-                      )
-                    ],
+                  IconButton(
+                    icon: const Icon(Icons.person, color: Colors.grey),
+                    onPressed: () {},
                   ),
                 ],
               ),
@@ -118,7 +105,7 @@ class _HomePageState extends State<HomePage>
                 controller: _tabController,
                 physics: const NeverScrollableScrollPhysics(), // 스와이프 비활성화
                 children: [
-                  AlcholTing(), // 첫 번째 탭: 술배팅 페이지
+                  const AlcholTing(), // 첫 번째 탭: 술배팅 페이지
                   MajorTIng(), // 두 번째 탭: 과팅 페이지
                   TaxiTIng(), // 세 번째 탭: 택시팅 페이지
                 ],
@@ -134,10 +121,7 @@ class _HomePageState extends State<HomePage>
             label: '',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.person,
-                color: matchingProvider.isMatching
-                    ? Colors.red
-                    : Colors.blue[100]),
+            icon: Icon(Icons.person, color: Colors.blue[100]),
             label: '',
           ),
           const BottomNavigationBarItem(
