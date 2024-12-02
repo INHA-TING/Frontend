@@ -1,19 +1,6 @@
 import 'package:flutter/material.dart';
 
-void main() {
-  runApp(MyApp());
-}
-
-class MyApp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      home: MainScreen(),
-    );
-  }
-}
-
-class MainScreen extends StatelessWidget {
+class LoginPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -38,11 +25,10 @@ class MainScreen extends StatelessWidget {
                 height: 150,
               ),
               SizedBox(height: 20),
-              // 아이디 입력 필드
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 40.0),
                 child: TextField(
-                  style: TextStyle(fontSize: 20), // 입력 및 라벨 텍스트 크기 통일
+                  style: TextStyle(fontSize: 20),
                   decoration: InputDecoration(
                     labelText: '이메일',
                     border: UnderlineInputBorder(),
@@ -50,12 +36,11 @@ class MainScreen extends StatelessWidget {
                 ),
               ),
               SizedBox(height: 10),
-              // 비밀번호 입력 필드
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 40.0),
                 child: TextField(
                   obscureText: true,
-                  style: TextStyle(fontSize: 20), // 입력 및 라벨 텍스트 크기 통일
+                  style: TextStyle(fontSize: 20),
                   decoration: InputDecoration(
                     labelText: '비밀번호',
                     border: UnderlineInputBorder(),
@@ -63,15 +48,12 @@ class MainScreen extends StatelessWidget {
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.symmetric(
-                    horizontal: 40.0), // 입력 필드와 동일한 패딩 적용
+                padding: const EdgeInsets.symmetric(horizontal: 40.0),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
                     TextButton(
-                      onPressed: () {
-                        // 아이디 비밀번호 찾기 기능 추가
-                      },
+                      onPressed: () {},
                       child: Text(
                         '아이디 / 비밀번호 찾기',
                         style: TextStyle(
@@ -84,21 +66,19 @@ class MainScreen extends StatelessWidget {
                 ),
               ),
               SizedBox(height: 20),
-              // 로그인 및 회원가입 버튼
               Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  // 로그인 버튼
                   SizedBox(
-                    width: 350, // 버튼 너비를 고정
+                    width: 350,
                     child: ElevatedButton(
                       onPressed: () {
-                        // 로그인 기능 추가
+                        Navigator.pushReplacementNamed(context, '/home');
                       },
                       style: ElevatedButton.styleFrom(
-                        backgroundColor: Color(0xFF0077B6), // 로그인 버튼 색상
-                        foregroundColor: Colors.white, // 텍스트 색상
-                        padding: EdgeInsets.symmetric(vertical: 10), // 버튼 높이 조정
+                        backgroundColor: Color(0xFF0077B6),
+                        foregroundColor: Colors.white,
+                        padding: EdgeInsets.symmetric(vertical: 10),
                         textStyle: TextStyle(
                           fontSize: 18,
                           fontWeight: FontWeight.bold,
@@ -110,19 +90,18 @@ class MainScreen extends StatelessWidget {
                       child: Text('로그인'),
                     ),
                   ),
-                  SizedBox(height: 10), // 버튼 간의 간격
-                  // 회원가입 버튼
+                  SizedBox(height: 10),
                   SizedBox(
                     width: 350,
-                    height: 50, // 버튼 너비를 고정
+                    height: 50,
                     child: ElevatedButton(
                       onPressed: () {
-                        // 회원가입 기능 추가
+                        Navigator.pushNamed(context, '/signup');
                       },
                       style: ElevatedButton.styleFrom(
-                        backgroundColor: Color(0xFFD0E3FF), // 회원가입 버튼 색상
-                        foregroundColor: Colors.black, // 텍스트 색상
-                        padding: EdgeInsets.symmetric(vertical: 10), // 버튼 높이 조정
+                        backgroundColor: Color(0xFFD0E3FF),
+                        foregroundColor: Colors.black,
+                        padding: EdgeInsets.symmetric(vertical: 10),
                         textStyle: TextStyle(
                           fontSize: 18,
                           fontWeight: FontWeight.bold,

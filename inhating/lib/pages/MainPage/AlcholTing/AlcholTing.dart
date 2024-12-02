@@ -50,7 +50,7 @@ class _AlcholTingState extends State<AlcholTing>
   @override
   Widget build(BuildContext context) {
     final matchingProvider = Provider.of<MatchingProvider>(context);
-    final isMatching = matchingProvider.isMatching; // 전역 매칭 상태
+    final isMatching = matchingProvider.isAlcholMatching; // 전역 매칭 상태
 
     // 매칭 상태에 따라 애니메이션 상태 동기화
     if (isMatching) {
@@ -360,13 +360,26 @@ class _AlcholTingState extends State<AlcholTing>
                       Expanded(
                         child: ElevatedButton(
                           onPressed: () {
+                            if (matchingProvider.isMajorMatching) {
+                              // 과팅 매칭 중이면 알림 표시하고 중단
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                const SnackBar(
+                                  content:
+                                      Text('과팅 매칭 중에는 술배팅 매칭을 시작할 수 없습니다.'),
+                                  duration: Duration(seconds: 3),
+                                ),
+                              );
+                              return;
+                            }
                             if (isMatching) {
-                              matchingProvider.stopMatching();
+                              // 술배팅 매칭 중지
+                              matchingProvider.stopAlcholMatching();
                               setState(() {
                                 showConditionBox = true;
                               });
                             } else {
-                              matchingProvider.startMatching();
+                              // 술배팅 매칭 시작
+                              matchingProvider.startAlcholMatching();
                             }
                           },
                           style: ElevatedButton.styleFrom(

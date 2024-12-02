@@ -1,21 +1,14 @@
+import 'dart:async';
 import 'package:flutter/material.dart';
 
-void main() {
-  runApp(MyApp());
-}
-
-class MyApp extends StatelessWidget {
+class SplashPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: MainScreen(),
-    );
-  }
-}
+    // 3초 후 LoginPage로 이동
+    Timer(const Duration(seconds: 3), () {
+      Navigator.pushReplacementNamed(context, '/login');
+    });
 
-class MainScreen extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
         // 그라데이션 배경 설정
