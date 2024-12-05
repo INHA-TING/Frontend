@@ -11,6 +11,8 @@ class RecordPage extends StatelessWidget {
     "게시판 내용 6",
   ];
 
+  const RecordPage({super.key});
+
   // 게시판 미리보기 데이터 제공 메서드
   static List<String> getPreviewPosts(int limit) {
     return posts.take(limit).toList(); // 상위 limit개의 데이터 반환

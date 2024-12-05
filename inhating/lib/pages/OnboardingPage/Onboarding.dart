@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -12,7 +12,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Onboarding Example',
       theme: ThemeData(primarySwatch: Colors.blue),
-      home: OnboardingScreen(),
+      home: const OnboardingScreen(),
     );
   }
 }
@@ -78,7 +78,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                       _currentIndex = index;
                     });
                   },
-                  children: [
+                  children: const [
                     OnboardingContent(
                       image: 'assets/Onboarding.png',
                       title: '환영합니다!',

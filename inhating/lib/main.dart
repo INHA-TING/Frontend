@@ -15,21 +15,23 @@ void main() {
         ChangeNotifierProvider(
             create: (_) => MatchingProvider()), // MatchingProvider 등록
       ],
-      child: MyApp(),
+      child: const MyApp(),
     ),
   );
 }
 
 class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       initialRoute: '/', // 초기 라우트를 스플래시 페이지로 설정
       routes: {
-        '/': (context) => SplashPage(), // 스플래시 페이지
-        '/login': (context) => LoginPage(),
-        '/signup': (context) => RegisterPage(),
-        '/home': (context) => HomePage(), // 메인 홈 페이지
+        '/': (context) => const SplashPage(), // 스플래시 페이지
+        '/login': (context) => const LoginPage(),
+        '/signup': (context) => const RegisterPage(),
+        '/home': (context) => const HomePage(), // 메인 홈 페이지
       },
     );
   }
@@ -37,6 +39,8 @@ class MyApp extends StatelessWidget {
 
 // Home Page with Tabs
 class HomePage extends StatefulWidget {
+  const HomePage({super.key});
+
   @override
   _HomePageState createState() => _HomePageState();
 }
@@ -112,8 +116,8 @@ class _HomePageState extends State<HomePage>
               child: TabBarView(
                 controller: _tabController,
                 physics: const NeverScrollableScrollPhysics(), // 스와이프 비활성화
-                children: [
-                  const AlcholTing(), // 첫 번째 탭: 술배팅 페이지
+                children: const [
+                  AlcholTing(), // 첫 번째 탭: 술배팅 페이지
                   MajorTIng(), // 두 번째 탭: 과팅 페이지
                   TaxiTIng(), // 세 번째 탭: 택시팅 페이지
                 ],
