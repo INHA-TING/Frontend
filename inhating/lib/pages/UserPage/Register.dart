@@ -129,7 +129,7 @@ class RegisterPage extends StatelessWidget {
                       ),
                       const SizedBox(height: 20),
                       Image.asset(
-                        'assets/logo.png',
+                        'assets/InhaTingLogoMain.png',
                         height: 60,
                       ),
                       const SizedBox(height: 10),
@@ -205,7 +205,26 @@ class RegisterPage extends StatelessWidget {
                       borderRadius: BorderRadius.circular(16),
                     ),
                   ),
-                  onPressed: () {},
+                  onPressed: () {
+                    // 회원가입 완료 메시지 및 로그인 페이지로 이동
+                    showDialog(
+                      context: context,
+                      builder: (context) => AlertDialog(
+                        title: const Text('회원가입 완료'),
+                        content: const Text('회원가입이 완료되었습니다. 입력하신 정보는 추후 수정이 가능합니다.'),
+                        actions: [
+                          TextButton(
+                            onPressed: () {
+                              Navigator.of(context).pop();
+                              Navigator.pushReplacementNamed(
+                                  context, '/login'); // Login 페이지로 이동
+                            },
+                            child: const Text('확인'),
+                          ),
+                        ],
+                      ),
+                    );
+                  },
                   child: const Text(
                     '시작하기',
                     style: TextStyle(fontSize: 16, color: Colors.white),

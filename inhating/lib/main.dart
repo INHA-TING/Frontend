@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:inhating/pages/OnboardingPage/Onboarding.dart';
+import 'package:inhating/pages/UserPage/AgreementPage.dart';
 import 'package:inhating/pages/UserPage/Register.dart';
+import 'package:inhating/pages/UserPage/UserAuthentication.dart';
 import 'package:provider/provider.dart';
 import 'package:inhating/pages/MainPage/AlcholTing/AlcholTing.dart';
 import 'package:inhating/pages/MainPage/MajorTIng/MajorTing.dart';
@@ -30,6 +33,9 @@ class MyApp extends StatelessWidget {
       routes: {
         '/': (context) => const SplashPage(), // 스플래시 페이지
         '/login': (context) => const LoginPage(),
+        '/onboarding': (context) => const OnboardingScreen(),
+        '/agreement': (context) => const AgreementPage(),
+        '/userAuthentication': (context) => const UserAuthenticationPage(),
         '/signup': (context) => const RegisterPage(),
         '/home': (context) => const HomePage(), // 메인 홈 페이지
       },

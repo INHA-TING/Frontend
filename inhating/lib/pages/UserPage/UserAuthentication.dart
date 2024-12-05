@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class AgreementPage extends StatelessWidget {
-  const AgreementPage({super.key});
+class UserAuthenticationPage extends StatelessWidget {
+  const UserAuthenticationPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -42,7 +42,7 @@ class AgreementPage extends StatelessWidget {
                       ),
                       const SizedBox(height: 10),
                       const Text(
-                        '이용 약관',
+                        '사용자 인증',
                         style: TextStyle(
                           fontSize: 24,
                           fontWeight: FontWeight.bold,
@@ -50,7 +50,7 @@ class AgreementPage extends StatelessWidget {
                       ),
                       const SizedBox(height: 5),
                       const Text(
-                        '이용 약관을 읽고 동의해주세요',
+                        '아이디와 비밀번호를 입력하세요',
                         style: TextStyle(
                           fontSize: 16,
                           color: Colors.black54,
@@ -71,18 +71,53 @@ class AgreementPage extends StatelessWidget {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Container(
-                          width: double.infinity,
-                          height: 300,
-                          decoration: BoxDecoration(
-                            color: Colors.grey[300],
-                            borderRadius: BorderRadius.circular(12),
+                        // 사용자 ID 입력
+                        const Text(
+                          '아이디',
+                          style: TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.black87,
                           ),
-                          child: const Center(
-                            child: Text(
-                              '이용 약관 내용이 여기에 표시됩니다.',
-                              textAlign: TextAlign.center,
-                              style: TextStyle(fontSize: 16),
+                        ),
+                        const SizedBox(height: 8),
+                        Container(
+                          padding: const EdgeInsets.symmetric(horizontal: 16),
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(12),
+                            border: Border.all(color: Colors.grey),
+                          ),
+                          child: const TextField(
+                            decoration: InputDecoration(
+                              border: InputBorder.none,
+                              hintText: '아이디를 입력하세요',
+                            ),
+                          ),
+                        ),
+                        const SizedBox(height: 20),
+                        // 비밀번호 입력
+                        const Text(
+                          '비밀번호',
+                          style: TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.black87,
+                          ),
+                        ),
+                        const SizedBox(height: 8),
+                        Container(
+                          padding: const EdgeInsets.symmetric(horizontal: 16),
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(12),
+                            border: Border.all(color: Colors.grey),
+                          ),
+                          child: const TextField(
+                            obscureText: true,
+                            decoration: InputDecoration(
+                              border: InputBorder.none,
+                              hintText: '비밀번호를 입력하세요',
                             ),
                           ),
                         ),
@@ -105,12 +140,11 @@ class AgreementPage extends StatelessWidget {
                     ),
                   ),
                   onPressed: () {
-                    // UserAuthenticationPage로 이동
-                    Navigator.pushReplacementNamed(
-                        context, '/userAuthentication');
+                    // RegisterPage로 이동
+                    Navigator.pushReplacementNamed(context, '/signup');
                   },
                   child: const Text(
-                    '동의하고 계속하기',
+                    '인증',
                     style: TextStyle(fontSize: 16, color: Colors.white),
                   ),
                 ),

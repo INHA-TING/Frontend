@@ -57,7 +57,7 @@ class _MajorTingMatchState extends State<MajorTingMatch> {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   const Text(
-                    '과팅',
+                    '실시간 과팅',
                     style: TextStyle(
                       fontSize: 24,
                       fontWeight: FontWeight.bold,
