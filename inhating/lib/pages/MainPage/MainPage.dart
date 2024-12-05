@@ -12,16 +12,18 @@ void main() {
         ChangeNotifierProvider(
             create: (_) => MatchingProvider()), // MatchingProvider 등록
       ],
-      child: MyApp(),
+      child: const MyApp(),
     ),
   );
 }
 
 // Main Application
 class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
       home: HomePage(),
     );
   }
@@ -29,6 +31,8 @@ class MyApp extends StatelessWidget {
 
 // Home Page with Tabs
 class HomePage extends StatefulWidget {
+  const HomePage({super.key});
+
   @override
   _HomePageState createState() => _HomePageState();
 }
@@ -104,8 +108,8 @@ class _HomePageState extends State<HomePage>
               child: TabBarView(
                 controller: _tabController,
                 physics: const NeverScrollableScrollPhysics(), // 스와이프 비활성화
-                children: [
-                  const AlcholTing(), // 첫 번째 탭: 술배팅 페이지
+                children: const [
+                  AlcholTing(), // 첫 번째 탭: 술배팅 페이지
                   MajorTIng(), // 두 번째 탭: 과팅 페이지
                   TaxiTIng(), // 세 번째 탭: 택시팅 페이지
                 ],

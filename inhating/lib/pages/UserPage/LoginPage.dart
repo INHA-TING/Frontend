@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
 class LoginPage extends StatelessWidget {
+  const LoginPage({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -11,22 +13,22 @@ class LoginPage extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start, // 위에서부터 정렬
             children: [
-              Text(
+              const Text(
                 '인하대의 모든 팅',
                 style: TextStyle(
                   fontSize: 20,
                   color: Colors.black,
                 ),
               ),
-              SizedBox(height: 20),
+              const SizedBox(height: 20),
               Image.asset(
                 'assets/MainLogoBlue.png',
                 width: 150,
                 height: 150,
               ),
-              SizedBox(height: 20),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 40.0),
+              const SizedBox(height: 20),
+              const Padding(
+                padding: EdgeInsets.symmetric(horizontal: 40.0),
                 child: TextField(
                   style: TextStyle(fontSize: 20),
                   decoration: InputDecoration(
@@ -35,9 +37,9 @@ class LoginPage extends StatelessWidget {
                   ),
                 ),
               ),
-              SizedBox(height: 10),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 40.0),
+              const SizedBox(height: 10),
+              const Padding(
+                padding: EdgeInsets.symmetric(horizontal: 40.0),
                 child: TextField(
                   obscureText: true,
                   style: TextStyle(fontSize: 20),
@@ -54,7 +56,7 @@ class LoginPage extends StatelessWidget {
                   children: [
                     TextButton(
                       onPressed: () {},
-                      child: Text(
+                      child: const Text(
                         '아이디 / 비밀번호 찾기',
                         style: TextStyle(
                           color: Colors.black,
@@ -65,7 +67,7 @@ class LoginPage extends StatelessWidget {
                   ],
                 ),
               ),
-              SizedBox(height: 20),
+              const SizedBox(height: 20),
               Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -76,10 +78,10 @@ class LoginPage extends StatelessWidget {
                         Navigator.pushReplacementNamed(context, '/home');
                       },
                       style: ElevatedButton.styleFrom(
-                        backgroundColor: Color(0xFF0077B6),
+                        backgroundColor: const Color(0xFF0077B6),
                         foregroundColor: Colors.white,
-                        padding: EdgeInsets.symmetric(vertical: 10),
-                        textStyle: TextStyle(
+                        padding: const EdgeInsets.symmetric(vertical: 10),
+                        textStyle: const TextStyle(
                           fontSize: 18,
                           fontWeight: FontWeight.bold,
                         ),
@@ -87,10 +89,10 @@ class LoginPage extends StatelessWidget {
                           borderRadius: BorderRadius.circular(50),
                         ),
                       ),
-                      child: Text('로그인'),
+                      child: const Text('로그인'),
                     ),
                   ),
-                  SizedBox(height: 10),
+                  const SizedBox(height: 10),
                   SizedBox(
                     width: 350,
                     height: 50,
@@ -99,10 +101,10 @@ class LoginPage extends StatelessWidget {
                         Navigator.pushNamed(context, '/signup');
                       },
                       style: ElevatedButton.styleFrom(
-                        backgroundColor: Color(0xFFD0E3FF),
+                        backgroundColor: const Color(0xFFD0E3FF),
                         foregroundColor: Colors.black,
-                        padding: EdgeInsets.symmetric(vertical: 10),
-                        textStyle: TextStyle(
+                        padding: const EdgeInsets.symmetric(vertical: 10),
+                        textStyle: const TextStyle(
                           fontSize: 18,
                           fontWeight: FontWeight.bold,
                         ),
@@ -110,7 +112,7 @@ class LoginPage extends StatelessWidget {
                           borderRadius: BorderRadius.circular(50),
                         ),
                       ),
-                      child: Text('회원가입'),
+                      child: const Text('회원가입'),
                     ),
                   ),
                 ],

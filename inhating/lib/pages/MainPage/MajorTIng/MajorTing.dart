@@ -3,6 +3,8 @@ import 'package:inhating/pages/MainPage/MajorTIng/MajorTingMatch.dart';
 import 'package:inhating/pages/MainPage/MajorTIng/MajorList.dart'; // MajorList import
 
 class MajorTIng extends StatelessWidget {
+  const MajorTIng({super.key});
+
   // 목록 미리보기 데이터 제공 메서드
   static List<String> fetchPreviewItems(int limit) {
     return List.generate(limit, (index) => "과팅 목록 ${index + 1}"); // 예제 데이터 생성
@@ -33,7 +35,7 @@ class MajorTIng extends StatelessWidget {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => MajorTingMatch(),
+                      builder: (context) => const MajorTingMatch(),
                     ),
                   );
                 },
@@ -48,7 +50,7 @@ class MajorTIng extends StatelessWidget {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => MajorList(), // limit 전달 X
+                      builder: (context) => const MajorList(), // limit 전달 X
                     ),
                   );
                 },

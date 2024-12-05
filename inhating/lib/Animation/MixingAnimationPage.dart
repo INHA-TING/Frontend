@@ -2,11 +2,13 @@ import 'package:flutter/material.dart';
 import 'dart:math';
 
 class MixingAnimationPage extends StatelessWidget {
+  const MixingAnimationPage({super.key});
+
   @override
   Widget build(BuildContext context) {
     return ClipRRect(
       borderRadius: BorderRadius.circular(8),
-      child: SizedBox(
+      child: const SizedBox(
         width: double.infinity,
         height: double.infinity,
         child: Stack(
@@ -22,6 +24,8 @@ class MixingAnimationPage extends StatelessWidget {
 
 // 곡선 애니메이션 위젯
 class LiquidMixWaveAnimation extends StatefulWidget {
+  const LiquidMixWaveAnimation({super.key});
+
   static double getWaveY(double x, Size size, double waveHeight,
       double waveSpeed, double waveProgress, double phaseShift) {
     double waveLength = size.width;
@@ -48,7 +52,7 @@ class _LiquidMixWaveAnimationState extends State<LiquidMixWaveAnimation>
 
     _waveController = AnimationController(
       vsync: this,
-      duration: Duration(seconds: 4),
+      duration: const Duration(seconds: 4),
     )..repeat();
 
     _waveAnimation =
@@ -141,6 +145,8 @@ class WavePainter extends CustomPainter {
 
 // 기포 애니메이션 위젯
 class BubbleAnimation extends StatefulWidget {
+  const BubbleAnimation({super.key});
+
   @override
   _BubbleAnimationState createState() => _BubbleAnimationState();
 }
@@ -156,7 +162,7 @@ class _BubbleAnimationState extends State<BubbleAnimation>
 
     _bubbleController = AnimationController(
       vsync: this,
-      duration: Duration(seconds: 6),
+      duration: const Duration(seconds: 6),
     )..addListener(() {
         setState(() {
           for (var bubble in bubbles) {

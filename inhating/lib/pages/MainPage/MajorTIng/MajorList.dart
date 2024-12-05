@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
 class MajorList extends StatelessWidget {
+  const MajorList({super.key});
+
   // 데이터를 서버에서 가져온다고 가정 (limit에 따라 동적으로 생성)
   List<String> fetchItems(int limit) {
     return List.generate(limit, (index) => "과팅 목록 ${index + 1}");
@@ -8,7 +10,7 @@ class MajorList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final limit = 100; // 전체 목록 개수
+    const limit = 100; // 전체 목록 개수
     final items = fetchItems(limit);
 
     return Scaffold(

@@ -11,6 +11,8 @@ class RankingPage extends StatelessWidget {
     "6위: 최영환",
   ];
 
+  const RankingPage({super.key});
+
   // 랭킹 미리보기 데이터 제공 메서드
   static List<String> getPreviewRankings(int limit) {
     return rankings.take(limit).toList(); // 상위 limit개의 데이터 반환

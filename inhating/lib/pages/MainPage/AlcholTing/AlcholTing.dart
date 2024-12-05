@@ -95,7 +95,7 @@ class _AlcholTingState extends State<AlcholTing>
                 onTap: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => RecordPage()),
+                    MaterialPageRoute(builder: (context) => const RecordPage()),
                   );
                 },
                 child: _buildPreviewBox('목록', previewPosts),
@@ -108,7 +108,7 @@ class _AlcholTingState extends State<AlcholTing>
                 onTap: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => RankingPage()),
+                    MaterialPageRoute(builder: (context) => const RankingPage()),
                   );
                 },
                 child: _buildPreviewBox('랭킹', previewRankings),
@@ -266,9 +266,9 @@ class _AlcholTingState extends State<AlcholTing>
                   bottom: 0,
                   left: 0,
                   right: 0,
-                  child: Container(
+                  child: SizedBox(
                     height: 150 * _animation.value,
-                    child: MixingAnimationPage(),
+                    child: const MixingAnimationPage(),
                   ),
                 );
               },
