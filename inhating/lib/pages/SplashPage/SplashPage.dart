@@ -29,16 +29,17 @@ class SplashPage extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               const Text(
-                '인하대의 모든 팅',
+                '인하대의 대학생 커뮤니티를 위한',
                 style: TextStyle(
                   fontSize: 20,
+                  fontWeight: FontWeight.w100,
                   color: Colors.white,
                 ),
               ),
               Image.asset(
                 'assets/image.png', // 이미지 파일 경로
-                width: 400,
-                height: 400,
+                width: 500,
+                height: 500,
               ),
             ],
           ),

@@ -14,11 +14,24 @@ class MajorTingMatch extends StatefulWidget {
 
 class _MajorTingMatchState extends State<MajorTingMatch> {
   int? _expandedId; // 현재 확장된 박스의 ID
+  final int maxFriends = 4; // 최대 친구 수 제한
 
   void _toggleExpand(int id) {
     setState(() {
       _expandedId = (_expandedId == id) ? null : id; // 클릭된 박스만 확장
     });
+  }
+
+  void _showSingleMessage(String message) {
+    if (ScaffoldMessenger.of(context).mounted) {
+      ScaffoldMessenger.of(context).clearSnackBars(); // 기존 메시지 제거
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text(message),
+          duration: const Duration(seconds: 2),
+        ),
+      );
+    }
   }
 
   @override
@@ -180,41 +193,59 @@ class _MajorTingMatchState extends State<MajorTingMatch> {
                             friendText: 'Friend_s ID $id',
                           ),
                         ),
-                        if (matchingProvider.majorSelectedFriends.length < 4 &&
+                        if (matchingProvider.majorSelectedFriends.length <
+                                maxFriends &&
                             !matchingProvider.isMajorMatching)
                           GestureDetector(
                             onTap: () {
-                              showDialog(
-                                context: context,
-                                barrierDismissible: false,
-                                builder: (BuildContext context) {
-                                  return Stack(
-                                    children: [
-                                      BackdropFilter(
-                                        filter: ImageFilter.blur(
-                                            sigmaX: 10, sigmaY: 10),
-                                        child: Container(
-                                          color: const Color.fromARGB(
-                                                  255, 173, 173, 173)
-                                              .withOpacity(0.5),
-                                        ),
-                                      ),
-                                      Center(
-                                        child: Dialog(
-                                          shape: RoundedRectangleBorder(
-                                            borderRadius:
-                                                BorderRadius.circular(12),
-                                          ),
-                                          child: PlusFriend(
-                                            onConfirm:
-                                                matchingProvider.addMajorFriend,
+                              if (matchingProvider
+                                      .majorSelectedFriends.length >=
+                                  maxFriends) {
+                                _showSingleMessage('최대 4명까지만 친구를 추가할 수 있습니다.');
+                              } else {
+                                showDialog(
+                                  context: context,
+                                  barrierDismissible: false,
+                                  builder: (BuildContext context) {
+                                    return Stack(
+                                      children: [
+                                        BackdropFilter(
+                                          filter: ImageFilter.blur(
+                                              sigmaX: 10, sigmaY: 10),
+                                          child: Container(
+                                            color: const Color.fromARGB(
+                                                    255, 173, 173, 173)
+                                                .withOpacity(0.5),
                                           ),
                                         ),
-                                      ),
-                                    ],
-                                  );
-                                },
-                              );
+                                        Center(
+                                          child: Dialog(
+                                            shape: RoundedRectangleBorder(
+                                              borderRadius:
+                                                  BorderRadius.circular(12),
+                                            ),
+                                            child: PlusFriend(
+                                              onConfirm: (friendId) {
+                                                if (matchingProvider
+                                                        .majorSelectedFriends
+                                                        .length >=
+                                                    maxFriends) {
+                                                  _showSingleMessage(
+                                                      '최대 4명까지만 친구를 추가할 수 있습니다.');
+                                                } else {
+                                                  matchingProvider
+                                                      .addMajorFriend(friendId);
+                                                }
+                                              },
+                                               currentCount: matchingProvider.majorSelectedFriends.length, // 추가된 매개변수
+                                            ),
+                                          ),
+                                        ),
+                                      ],
+                                    );
+                                  },
+                                );
+                              }
                             },
                             child: Container(
                               width: double.infinity,
@@ -247,24 +278,14 @@ class _MajorTingMatchState extends State<MajorTingMatch> {
                           child: TextButton(
                             onPressed: () {
                               if (matchingProvider.isAlcholMatching) {
-                                ScaffoldMessenger.of(context).showSnackBar(
-                                  const SnackBar(
-                                    content:
-                                        Text('술배팅 매칭 중에는 과팅 매칭을 시작할 수 없습니다.'),
-                                    duration: Duration(seconds: 3),
-                                  ),
-                                );
+                                _showSingleMessage(
+                                    '술배팅 매칭 중에는 과팅 매칭을 시작할 수 없습니다.');
                                 return;
                               }
                               if (matchingProvider.majorSelectedFriends.length +
                                       1 <
                                   2) {
-                                ScaffoldMessenger.of(context).showSnackBar(
-                                  const SnackBar(
-                                    content: Text('매칭을 시작하려면 최소 2명이 필요합니다.'),
-                                    duration: Duration(seconds: 3),
-                                  ),
-                                );
+                                _showSingleMessage('매칭을 시작하려면 최소 2명이 필요합니다.');
                                 return;
                               }
                               if (matchingProvider.isMajorMatching) {

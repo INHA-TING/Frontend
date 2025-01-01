@@ -19,13 +19,7 @@ class LoginPage extends StatelessWidget {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.start, // 위에서부터 정렬
               children: [
-                const Text(
-                  '인하대의 모든 팅',
-                  style: TextStyle(
-                    fontSize: 20,
-                    color: Colors.black,
-                  ),
-                ),
+                
                 const SizedBox(height: 20),
                 Image.asset(
                   'assets/MainLogoBlue.png',
