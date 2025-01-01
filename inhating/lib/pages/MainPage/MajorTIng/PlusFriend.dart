@@ -7,7 +7,7 @@ class PlusFriend extends StatefulWidget {
   const PlusFriend({
     super.key,
     required this.onConfirm,
-    this.friendBoxHeight = 50, // 기본 높이 설정
+    this.friendBoxHeight = 50, required int currentCount, // 기본 높이 설정
   });
 
   @override

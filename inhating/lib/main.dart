@@ -1,15 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:inhating/pages/Chat/Communication.dart';
 import 'package:inhating/pages/OnboardingPage/Onboarding.dart';
-import 'package:inhating/pages/UserPage/AgreementPage.dart';
-import 'package:inhating/pages/UserPage/Register.dart';
-import 'package:inhating/pages/UserPage/UserAuthentication.dart';
+import 'package:inhating/pages/Register_Login/AgreementPage.dart';
+import 'package:inhating/pages/Register_Login/Register.dart';
+import 'package:inhating/pages/Register_Login/UserAuthentication.dart';
+import 'package:inhating/pages/UserPage/MyPage.dart';
 import 'package:provider/provider.dart';
 import 'package:inhating/pages/MainPage/AlcholTing/AlcholTing.dart';
 import 'package:inhating/pages/MainPage/MajorTIng/MajorTing.dart';
 import 'package:inhating/pages/MainPage/TaxiTing/TaxiTing.dart';
 import 'package:inhating/Providers/MatchingProvider.dart';
 import 'package:inhating/pages/SplashPage/SplashPage.dart';
-import 'package:inhating/pages/UserPage/LoginPage.dart';
+import 'package:inhating/pages/Register_Login/LoginPage.dart';
 
 void main() {
   runApp(
@@ -38,6 +40,9 @@ class MyApp extends StatelessWidget {
         '/userAuthentication': (context) => const UserAuthenticationPage(),
         '/signup': (context) => const RegisterPage(),
         '/home': (context) => const HomePage(), // 메인 홈 페이지
+        '/communication': (context) =>
+            const CommunicationPage(), // 친구 목록 페이지 라우트 추가
+        '/myPage': (context) => const MyPage(),
       },
     );
   }
@@ -89,12 +94,12 @@ class _HomePageState extends State<HomePage>
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Image.asset(
-                    'assets/InhaTingLogoMain.png', // 로고 이미지 경로
+                    'assets/', // 로고 이미지 경로
                     height: 40,
                   ),
                   IconButton(
                     icon: const Icon(Icons.person, color: Colors.grey),
-                    onPressed: () {},
+                    onPressed: () {Navigator.pushNamed(context, '/myPage');},
                   ),
                 ],
               ),
@@ -116,8 +121,6 @@ class _HomePageState extends State<HomePage>
                 Tab(text: '택시팅'),
               ],
             ),
-
-            // 각 탭에 컴포넌트로 구성된 페이지 뷰
             Expanded(
               child: TabBarView(
                 controller: _tabController,
@@ -132,25 +135,12 @@ class _HomePageState extends State<HomePage>
           ],
         ),
       ),
-      bottomNavigationBar: BottomNavigationBar(
-        items: [
-          const BottomNavigationBarItem(
-            icon: Icon(Icons.home, color: Colors.grey),
-            label: '',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.person, color: Colors.blue[100]),
-            label: '',
-          ),
-          const BottomNavigationBarItem(
-            icon: Icon(Icons.favorite, color: Colors.blue),
-            label: '',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.chat_bubble, color: Colors.blue[100]),
-            label: '',
-          ),
-        ],
+      floatingActionButton: FloatingActionButton(
+        backgroundColor: Colors.blue, // 버튼 색상
+        onPressed: () {
+          Navigator.pushNamed(context, '/communication');
+        },
+        child: const Icon(Icons.chat, color: Colors.white), // 채팅 아이콘
       ),
     );
   }
